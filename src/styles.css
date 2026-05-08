@@ -153,6 +153,16 @@
 .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
 .animate-orbit-slow { animation: orbit 40s linear infinite; }
 .animate-blink { animation: blink 2s ease-in-out infinite; }
+.animate-spin-slow { animation: orbit 12s linear infinite; }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.35s ease-out both; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
 /* ─── Custom Scrollbar ─────────────────────────────────────────────────────── */
 
