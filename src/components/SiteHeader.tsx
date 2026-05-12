@@ -18,6 +18,7 @@ export function SiteHeader() {
           <a href="#capabilities" className="hover:text-foreground transition-colors">Capabilities</a>
           <a href="#stack" className="hover:text-foreground transition-colors">Stack</a>
           <a href="#roadmap" className="hover:text-foreground transition-colors">Roadmap</a>
+          <a href="/feedback" className="hover:text-foreground transition-colors">Feedback</a>
         </nav>
         <a href="/workspace" className="font-mono text-xs uppercase tracking-widest text-primary border border-primary/40 hover:bg-primary/10 px-4 py-2 rounded-md transition-colors">
           Open Workspace →

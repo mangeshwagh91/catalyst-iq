@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkspaceRouteImport } from './routes/workspace'
+import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WorkspaceRoute = WorkspaceRouteImport.update({
   id: '/workspace',
   path: '/workspace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/feedback': typeof FeedbackRoute
   '/workspace': typeof WorkspaceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/feedback': typeof FeedbackRoute
   '/workspace': typeof WorkspaceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/feedback': typeof FeedbackRoute
   '/workspace': typeof WorkspaceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/workspace'
+  fullPaths: '/' | '/feedback' | '/workspace'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/workspace'
-  id: '__root__' | '/' | '/workspace'
+  to: '/' | '/feedback' | '/workspace'
+  id: '__root__' | '/' | '/feedback' | '/workspace'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FeedbackRoute: typeof FeedbackRoute
   WorkspaceRoute: typeof WorkspaceRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/workspace'
       fullPath: '/workspace'
       preLoaderRoute: typeof WorkspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FeedbackRoute: FeedbackRoute,
   WorkspaceRoute: WorkspaceRoute,
 }
 export const routeTree = rootRouteImport
