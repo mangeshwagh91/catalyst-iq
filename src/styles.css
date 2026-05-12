@@ -194,3 +194,9 @@
 ::-webkit-scrollbar-corner {
   background: oklch(0.18 0.025 240);
 }
+
+@layer components {
+  .ws-input {
+    @apply w-full bg-background/60 border border-border rounded-md px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/30 transition-colors;
+  }
+}
